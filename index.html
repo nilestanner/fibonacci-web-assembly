@@ -1,0 +1,28 @@
+<html>
+<header>
+    <title>This is title</title>
+    <script src="ui.controller.js"></script>
+    <script src="main.javascript.js"></script>
+    <script src="main.assembly.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.0/build/pure-min.css" integrity="sha384-nn4HPE8lTHyVtfCBi5yW9d20FjT8BJwUXyWZT9InLYax14RDjBj46LmSztkmNP9w" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+</header>
+<body onload="init()">
+    <form class="pure-form pure-form-stacked">
+        <fieldset>
+            <legend>Fibonacci Calculator</legend>
+    
+            <label for="max-fib">Number of Fibonacci Numbers</label>
+            <input type="number" id="max-fib" placeholder="Number of Fibonacci Numbers">
+
+            <label for="iterations">Number of iterations</label>
+            <input type="number" id="iterations" placeholder="Number of iterations">
+            
+        </fieldset>
+    </form>
+    <button class="pure-button pure-button-primary" onclick="findFibJS()">Calculate With js</button>
+    <button class="pure-button pure-button-primary" onclick="findFibWA()">Calculate With webassembly</button>
+    <div id="result-time"></div>
+    <div id="result-fib"></div>
+</body>
+</html>

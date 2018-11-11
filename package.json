@@ -1,0 +1,16 @@
+{
+  "name": "fib",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "assemblyscript": "github:AssemblyScript/assemblyscript",
+    "gulp": "^3.9.1"
+  },
+  "scripts": {
+    "build": "gulp"
+  },
+  "author": "Niles Tanner <niles.tanner@gmail.com> (https://www.nilestanner.com)",
+  "license": "ISC"
+}

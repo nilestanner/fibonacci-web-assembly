@@ -1,0 +1,10 @@
+body {
+    margin: 16px;
+}
+
+#result-time {
+    font-size: 22pt;
+    font-weight:900;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
