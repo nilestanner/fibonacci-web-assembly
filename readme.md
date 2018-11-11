@@ -2,7 +2,7 @@
 
 ## Demo: 
 
-[:computer:Demo!](https://www.nilestanner.com/fibonacci-web-assembly/)
+[:computer:Demo!](http://www.fibonacci-web-assembly.nilestanner.com/)
 
 ## Technologies
 - [AssemblyScript](https://github.com/AssemblyScript/assemblyscript) - For converting Typescript into WASM
