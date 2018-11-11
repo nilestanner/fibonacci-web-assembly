@@ -10,9 +10,9 @@ const setup = async () => {
         env: { memory: memory }
     });
     var exports = module.instance.exports;
-    exports.init(iterations, maxFib);
-    findFibWA = function () {
+        findFibWA = function () {
         loadValuesFromUI();
+        exports.init(iterations, maxFib);
         const start = new Date().getTime();
         exports.findFibWA();
         const end = new Date().getTime();
