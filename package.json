@@ -5,11 +5,11 @@
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
-    "assemblyscript": "github:AssemblyScript/assemblyscript",
-    "gulp": "^4.0.0"
+    "assemblyscript": "github:AssemblyScript/assemblyscript"
   },
   "scripts": {
-    "build": "gulp"
+    "build": "node build.js",
+    "start": "http-server -o"
   },
   "author": "Niles Tanner <niles.tanner@gmail.com> (https://www.nilestanner.com)",
   "license": "ISC"

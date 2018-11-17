@@ -1,7 +1,7 @@
 let findFibWA;
 
 const setup = async () => {
-    const arraySize = (8 * maxFib) >>> 0;
+    const arraySize = (4 * maxFib) >>> 0;
     const nPages = ((arraySize + 0xffff) & ~0xffff) >>> 16;
     const memory = new WebAssembly.Memory({ initial: nPages });
     const response = await fetch("../out/main.wasm");
@@ -16,7 +16,7 @@ const setup = async () => {
         const start = new Date().getTime();
         exports.findFibWA();
         const end = new Date().getTime();
-        let mem = new Float64Array(memory.buffer);
+        let mem = new Uint32Array(memory.buffer);
         publishResults(end - start, Array.from(mem.slice(0, maxFib + 1)));
     };
 }

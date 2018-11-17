@@ -7,7 +7,7 @@ const findFibJS = () => {
             if (n === 0 || n === 1) {
                 fibs[n] = n;
             } else {
-                fibs[n] = fibs[n -2] + fibs[n -1];
+                fibs[n] = fibs[n - 2] + fibs[n - 1];
             }
         }
     }
