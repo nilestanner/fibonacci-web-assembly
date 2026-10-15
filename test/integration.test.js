@@ -42,14 +42,28 @@ describe('JS and WebAssembly implementations (page wiring)', () => {
     assert.deepStrictEqual(wa, js);
   });
 
-  it('JS and WebAssembly diverge once values exceed 32 bits (documented limitation)', async () => {
+  it('WebAssembly refuses to run past fib(47) with a clear message instead of wrapping silently', async () => {
     const { run, document } = await loadFullPage({ maxFib: 50, iterations: 1 });
+    run('findFibWA()');
+    assert.deepStrictEqual(published(document), []);
+    assert.match(document.elements['result-fib'].innerHTML, /at most 47/);
+    assert.strictEqual(document.elements['result-time'].innerHTML, '');
+  });
+
+  it('WebAssembly still runs at exactly the limit (fib(47)) and matches JS', async () => {
+    const { run, document } = await loadFullPage({ maxFib: 47, iterations: 1 });
     run('findFibJS()');
     const js = published(document);
     run('findFibWA()');
     const wa = published(document);
-    assert.strictEqual(js[50], 12586269025);
-    assert.notStrictEqual(wa[50], js[50]);
-    assert.strictEqual(wa[50], 12586269025 % 2 ** 32);
+    assert.strictEqual(wa.length, 48);
+    assert.deepStrictEqual(wa, js);
+    assert.strictEqual(wa[47], 2971215073);
+  });
+
+  it('the JS implementation keeps going past the WebAssembly limit', async () => {
+    const { run, document } = await loadFullPage({ maxFib: 50, iterations: 1 });
+    run('findFibJS()');
+    assert.strictEqual(published(document)[50], 12586269025);
   });
 });
