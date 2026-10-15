@@ -52,4 +52,13 @@ describe('JS and WebAssembly implementations (page wiring)', () => {
     assert.notStrictEqual(wa[50], js[50]);
     assert.strictEqual(wa[50], 12586269025 % 2 ** 32);
   });
+
+  it('grows the wasm memory instead of trapping when more numbers are requested than the initial page holds', async () => {
+    // Default maxFib (300) sizes memory to a single 64 KiB page = 16384 entries.
+    const { run, document } = await loadFullPage({ maxFib: 20000, iterations: 1 });
+    run('findFibWA()');
+    const rows = published(document);
+    assert.strictEqual(rows.length, 20001);
+    assert.deepStrictEqual(rows.slice(0, 8), [0, 1, 1, 2, 3, 5, 8, 13]);
+  });
 });

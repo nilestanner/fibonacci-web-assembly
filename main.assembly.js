@@ -12,6 +12,11 @@ const setup = async () => {
     var exports = module.instance.exports;
         findFibWA = function () {
         loadValuesFromUI();
+        // The memory was sized once at load using the default maxFib; grow it if the user asks for more.
+        const neededPages = Math.ceil(((maxFib + 1) * 4) / 0x10000);
+        if (neededPages > memory.buffer.byteLength / 0x10000) {
+            memory.grow(neededPages - memory.buffer.byteLength / 0x10000);
+        }
         exports.init(iterations, maxFib);
         const start = new Date().getTime();
         exports.findFibWA();
