@@ -7,7 +7,7 @@ const page = (values) => loadPage({ scripts, values });
 
 // Parses the "<index>: <value>" rows that publishResults writes into #result-fib.
 const publishedFibs = (document) =>
-  [...document.elements['result-fib'].innerHTML.matchAll(/<div>(\d+): (-?[\d.e+]+)<div>/g)].map((m) => Number(m[2]));
+  [...document.elements['result-fib'].innerHTML.matchAll(/<div>(\d+): (-?[\d.e+]+)<\/div>/g)].map((m) => Number(m[2]));
 
 describe('ui.controller.js', () => {
   it('has defaults of 300 numbers and 1,000,000 iterations', () => {
@@ -45,7 +45,7 @@ describe('ui.controller.js', () => {
     const { run, document } = page({});
     run('publishResults(12, [0, 1, 1, 2])');
     assert.strictEqual(document.elements['result-time'].innerHTML, '12 ms');
-    assert.strictEqual(document.elements['result-fib'].innerHTML, '<div>0: 0<div><div>1: 1<div><div>2: 1<div><div>3: 2<div>');
+    assert.strictEqual(document.elements['result-fib'].innerHTML, '<div>0: 0</div><div>1: 1</div><div>2: 1</div><div>3: 2</div>');
   });
 });
 
@@ -86,9 +86,8 @@ describe('main.javascript.js findFibJS()', () => {
     assert.strictEqual(document.elements['result-fib'].innerHTML, '');
   });
 
-  // Known quirk: rows are written as "<div>i: v<div>" (second tag should be </div>).
+  // Regression: rows used to be written as "<div>i: v<div>" (closing tag missing its slash).
   it('closes each row with </div>',
-    { todo: 'ui.controller.js publishResults emits <div> instead of </div> as the closing tag' },
     () => {
       const { run, document } = page({});
       run('publishResults(1, [0, 1])');
