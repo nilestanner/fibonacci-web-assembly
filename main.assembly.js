@@ -12,6 +12,11 @@ const setup = async () => {
     var exports = module.instance.exports;
         findFibWA = function () {
         loadValuesFromUI();
+        // The compiled module uses 32-bit integers, so results past fib(47) would silently wrap.
+        if (maxFib > MAX_WASM_FIB) {
+            publishError(`The WebAssembly version uses 32-bit integers, so it supports at most ${MAX_WASM_FIB} (up to fib(${MAX_WASM_FIB})). Use "Calculate With js" for larger values.`);
+            return;
+        }
         exports.init(iterations, maxFib);
         const start = new Date().getTime();
         exports.findFibWA();
