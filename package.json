@@ -5,7 +5,7 @@
   "main": "gulpfile.js",
   "dependencies": {},
   "devDependencies": {
-    "assemblyscript": "github:AssemblyScript/assemblyscript"
+    "assemblyscript": "github:AssemblyScript/assemblyscript#6f3209e6c64155ff6696f6bd04c40edff9ad2c66"
   },
   "scripts": {
     "build": "node build.js",
