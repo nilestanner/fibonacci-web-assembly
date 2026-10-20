@@ -22,7 +22,7 @@ const loadFullPage = async (values) => {
 };
 
 const published = (document) =>
-  [...document.elements['result-fib'].innerHTML.matchAll(/<div>(\d+): (-?\d+)<div>/g)].map((m) => Number(m[2]));
+  [...document.elements['result-fib'].innerHTML.matchAll(/<div>(\d+): (-?\d+)<\/div>/g)].map((m) => Number(m[2]));
 
 describe('JS and WebAssembly implementations (page wiring)', () => {
   it('findFibWA() reads the form, runs the wasm module and publishes the results', async () => {

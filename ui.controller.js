@@ -10,7 +10,7 @@ const loadValuesFromUI = () => {
 const publishResults = (timeTaken, fibs) => {
     document.getElementById('result-time').innerHTML = `${timeTaken} ms`;
     document.getElementById('result-fib').innerHTML = fibs.map((fib, index) => {
-        return `<div>${index}: ${fib}<div>`;
+        return `<div>${index}: ${fib}</div>`;
     }).join('');
 }
 
