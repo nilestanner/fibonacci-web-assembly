@@ -1,4 +1,4 @@
-const asc = require("assemblyscript/bin/asc");
+const asc = require("assemblyscript/asc");
 asc.main([
   "main.ts",
   "--baseDir", "assembly",
